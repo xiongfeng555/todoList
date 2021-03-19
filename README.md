@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # vue-musci
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# todoList
+>>>>>>> 5d07fb8f024bdb145f7e0575a21d25fc533205b2
