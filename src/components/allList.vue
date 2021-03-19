@@ -34,9 +34,6 @@ export default {
 .item-count {
   color: #000;
 }
-.list-group {
-  margin-bottom: 0 !important;
-}
 .mybtn {
   display: flex;
   justify-content: space-between;

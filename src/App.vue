@@ -9,10 +9,12 @@
           <span class="input-group-addon finger list-group1" id="basic-addon1" @click="changeAllSelected">
             <span class="el-icon-arrow-down"></span>
           </span>
-          <input type="text" class="form-control myinput" placeholder="What needs to be done?" aria-describedby="basic-addon1" v-model="value"
+          <input type="text" class="form-control" placeholder="What needs to be done?" aria-describedby="basic-addon1" v-model="value"
             @keyup.enter="addToList" />
         </div>
-       <router-view></router-view>
+        <transition>
+        <router-view></router-view>
+        </transition>
         <ul class="list-group" v-show="$store.getters.getListLength !== 0">
           <li class="list-group-item">
             <div class="mybtn">
@@ -157,5 +159,21 @@ export default {
 }
 .delete{
   font-size: 16px;
+}
+// 动画效果
+.v-enter,
+.v-leave-to {
+  opacity: 0;
+  position: absolute;
+}
+.v-enter {
+  transform: translateX(100%);
+}
+.v-leave-to {
+  transform: translateX(-100%);
+}
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.5s ease;
 }
 </style>
