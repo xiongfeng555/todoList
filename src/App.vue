@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <div class="container">
-      <div class="todolist-content">
+      <div class="todolist-content container">
         <div class="page-header">
           <h1>todos</h1>
         </div>
@@ -30,9 +29,8 @@
             </div>
           </li>
         </ul>
-        <el-button type="success" size="normal" class="btn_save" @click="save">保存</el-button>
       </div>
-    </div>
+      <el-button type="success" size="normal" class="btn_save" @click="save" v-show="$store.getters.getListLength!==0">保存</el-button>
   </div>
 </template>
 <script>
@@ -41,7 +39,8 @@ export default {
   data () {
     return {
       flag: false,
-      value: ''
+      value: '',
+      url: 'http://localhost:5000'
     }
   },
   created () {
@@ -101,12 +100,41 @@ export default {
 }
 </script>
 <style lang="scss">
+body{
+  font-family: 'Helvetica Neue';
+  min-width: 600px;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.todolist-content{
+overflow: hidden;
+ width: 600px;
+ height: 100%;
+ margin-bottom: 40px;
+  .page-header{
+    border-bottom:0 ;
+    h1{
+      font-size: 100px;
+      font-weight: 100;
+      color: rgba(175, 47, 47, 0.15);
+    }
+  }
+}
+.list-group{
+  margin-bottom: 0;
+}
+.input-group{
+  .input-group-addon{
+    border-radius: 0;
+  }
+  .form-control{
+    border-radius: 0;
+  }
 }
 .list-group1 {
   margin-bottom: 0 !important;
@@ -116,16 +144,19 @@ export default {
 .item-count {
   color: #000;
 }
+.input-group-lg > .form-control{
+  height: 50px;
+}
 
 .mybtn {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   .btn-gp{
     display: flex;
      a {
   margin: 0 10px 0;
-  font-size: 16px;
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   align-self: center;
 }
   }
@@ -133,11 +164,11 @@ export default {
   .mybtn_left{
     display: flex;
     justify-content: space-between;
-    width: 60%;
+    width: 70%;
   }
   .mtbtn_right{
-    font-size:16px ;
     align-self: center;
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 }
 .finger{

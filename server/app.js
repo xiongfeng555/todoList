@@ -16,7 +16,6 @@ app.get('/', function(req, res) {
                 message: '服务区出错了'
             })
         } else {
-            console.log(info)
             res.status(200).json({
                 err_code: 1,
                 message: info
@@ -26,12 +25,17 @@ app.get('/', function(req, res) {
 })
 app.post('/save', function(req, res) {
     // 首先清空数据库，然后在存入新数据
+    console.log('123')
     Info.remove({}, function(err) {
+        console.log('清空了数据库')
         if (!err) {
+            console.log()
             req.body.forEach(item => {
                 new Info(item).save(function(err, data) {
                     if (!err) {
                         console.log(data)
+                    } else {
+                        console.log('出错了')
                     }
                 })
             })

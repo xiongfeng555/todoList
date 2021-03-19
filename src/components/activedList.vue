@@ -5,8 +5,8 @@
             <div class="item_contain">
               <el-switch active-color="green" inactive-color="#aaa" v-model="$store.getters.getSelected[item.id]" @change="changeSelected(item.id,$store.getters.getSelected[item.id])">
     </el-switch>
-              <p :class="item.selected ? 'line':''">{{ item.data }}</p>
-              <a href="#" @click.prevent="deleteItem(item.id)" class="delete">删除</a>
+              <p :class="item.selected ? 'line':''" class="data_content">{{ item.data }}</p>
+              <a href="#" @click.prevent="deleteItem(item.id)" class="delete">×</a>
             </div>
           </li>
         </ul>
@@ -30,7 +30,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
 .item-count {
   color: #000;
 }
@@ -43,6 +42,13 @@ export default {
     justify-content: space-between;
     width: 60%;
   }
+}
+.list-group{
+  font-size: 24px;
+  .data_content{
+  font-size: 24px;
+  line-height: 1.2;
+}
 }
 
 .btn-gp button {
