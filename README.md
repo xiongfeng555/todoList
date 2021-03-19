@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# vue-musci
+# vue-todoList
 
 ## Project setup
 ```
