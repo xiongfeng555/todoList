@@ -1,13 +1,13 @@
 <template>
     <div>
          <ul class="list-group">
-          <li class="list-group-item" v-for="item in $store.getters.getCompletedList" :key="item.id">
+          <li class="list-group-item item" v-for="item in $store.getters.getCompletedList" :key="item.id">
             <div class="item_contain">
               <el-switch active-color="green" inactive-color="#aaa" v-model="$store.getters.getSelected[item.id]" @change="changeSelected(item.id,$store.getters.getSelected[item.id])">
     </el-switch>
               <p :class="item.selected ? 'line':''" class="data_content">{{ item.data }}</p>
-              <a href="#" @click.prevent="deleteItem(item.id)" class="delete">×</a>
             </div>
+             <a href="#" @click.prevent="deleteItem(item.id)" class="delete">×</a>
           </li>
         </ul>
         </div>
@@ -30,7 +30,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.item{
+  display: flex;
+  justify-content: space-between;
+}
 .item-count {
   color: #000;
 }
@@ -47,7 +50,7 @@ export default {
   font-size: 24px;
   .data_content{
   font-size: 24px;
-  line-height: 1.2;
+  line-height: 0.8;
 }
 }
 
@@ -57,7 +60,6 @@ export default {
 .item_contain {
   display: flex;
   // align-items: center;
-  justify-content: space-between;
   p {
     margin-left: 30px;
     font-size: 18px;
@@ -69,5 +71,12 @@ export default {
 .line{
   text-decoration: line-through;
   color: #d9d9d9;
+}
+.delete{
+  font-size: 16px;
+  display: none;
+}
+.list-group-item:hover .delete{
+    display: inline-block;
 }
 </style>

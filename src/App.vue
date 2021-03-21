@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-      <div class="todolist-content container">
-        <div class="page-header">
+    <div class="page-header">
           <h1>todos</h1>
         </div>
+      <div class="todolist-content container">
         <div class="input-group input-group-lg">
           <span class="input-group-addon finger list-group1" id="basic-addon1" @click="changeAllSelected">
             <span class="el-icon-arrow-down"></span>
@@ -11,10 +11,8 @@
           <input type="text" class="form-control" placeholder="What needs to be done?" aria-describedby="basic-addon1" v-model="value"
             @keyup.enter="addToList" />
         </div>
-        <transition>
         <router-view></router-view>
-        </transition>
-        <ul class="list-group" v-show="$store.getters.getListLength !== 0">
+        <ul class="list-group last_box" v-show="$store.getters.getListLength !== 0">
           <li class="list-group-item">
             <div class="mybtn">
               <div class="mybtn_left">
@@ -40,7 +38,8 @@ export default {
     return {
       flag: false,
       value: '',
-      url: 'http://localhost:5000'
+      url: 'http://localhost:5000',
+      list: []
     }
   },
   created () {
@@ -103,6 +102,7 @@ export default {
 body{
   font-family: 'Helvetica Neue';
   min-width: 600px;
+  background:#f5f5f5;
 }
 #app {
   font-family: serif;
@@ -110,12 +110,8 @@ body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-.todolist-content{
-overflow: hidden;
- width: 600px;
- height: 100%;
- margin-bottom: 40px;
+  width: 100%;
+  margin: 0 auto;
   .page-header{
     border-bottom:0 ;
     h1{
@@ -124,6 +120,30 @@ overflow: hidden;
       color: rgba(175, 47, 47, 0.15);
     }
   }
+  .btn_save{
+  overflow: hidden;
+  margin-top: 40px;
+}
+}
+.todolist-content{
+  position: relative;
+ margin-bottom: 40px;
+ max-width: 550px;
+ margin: 0 auto;
+ font-weight: 300;
+ padding: 0;
+ box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+
+.last_box:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 42px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
 }
 .list-group{
   margin-bottom: 0;
@@ -135,6 +155,7 @@ overflow: hidden;
   .form-control{
     border-radius: 0;
   }
+  border-radius: 0;
 }
 .list-group1 {
   margin-bottom: 0 !important;
@@ -145,7 +166,7 @@ overflow: hidden;
   color: #000;
 }
 .input-group-lg > .form-control{
-  height: 50px;
+  height: 51px;
 }
 
 .mybtn {
@@ -184,10 +205,7 @@ overflow: hidden;
     font-size: 16px;
   }
 }
-.btn_save{
-  overflow: hidden;
-  margin-top: 40px;
-}
+
 .delete{
   font-size: 16px;
 }
