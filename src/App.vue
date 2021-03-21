@@ -39,7 +39,8 @@ export default {
       flag: false,
       value: '',
       url: 'http://localhost:5000',
-      list: []
+      list: [],
+      len: 0
     }
   },
   created () {
@@ -59,9 +60,11 @@ export default {
       }
       this.$store.commit('addTodoList', o)
       this.value = ''
+      this.len += 1
     },
     // 删除列表项
     deleteItem (id) {
+      this.len--
       this.$store.commit('deleteTodoItem', id)
     },
     // 从数据库初始化列表数据
@@ -81,7 +84,6 @@ export default {
       axios.post(this.url + '/save', this.$store.state.todoList).then(res => {
         console.log(res)
       })
-      alert('保存成功')
     },
     // 全选/全不选
     changeAllSelected () {
@@ -95,6 +97,14 @@ export default {
     }
   },
   computed: {
+  },
+  watch: {
+    len (newLength) {
+      console.log(newLength)
+      if (newLength === 0) {
+        this.save()
+      }
+    }
   }
 }
 </script>
@@ -126,7 +136,7 @@ body{
 }
 }
 .todolist-content{
-  position: relative;
+position: relative;
  margin-bottom: 40px;
  max-width: 550px;
  margin: 0 auto;

@@ -22,6 +22,7 @@ export default {
   methods: {
     deleteItem (id) {
       this.$store.commit('deleteTodoItem', id)
+      this.$parent.len -= 1
     },
     changeSelected (id, selected) {
       this.$store.commit('changeSelected', { id: id, selected: selected })
