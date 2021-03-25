@@ -34,6 +34,8 @@ export default {
 .item{
   display: flex;
   justify-content: space-between;
+  align-content: center;
+  align-items: center;
 }
 .item-count {
   color: #000;
@@ -51,7 +53,7 @@ export default {
   font-size: 24px;
   .data_content{
   font-size: 24px;
-  line-height: 0.8;
+  margin-bottom: 0;
 }
 }
 
@@ -60,7 +62,7 @@ export default {
 }
 .item_contain {
   display: flex;
-  // align-items: center;
+  align-items: center;
   p {
     margin-left: 30px;
     font-size: 18px;
