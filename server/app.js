@@ -28,7 +28,6 @@ app.post("/save", function(req, res) {
     Info.remove({}, function(err) {
         console.log("清空了数据库");
         if (!err) {
-            console.log();
             req.body.forEach(item => {
                 new Info(item).save(function(err, data) {
                     if (!err) {

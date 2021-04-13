@@ -99,33 +99,15 @@ export default new Vuex.Store({
     },
     // 如果有状态被选中返回true，否则返回false
     getClearCount (state) {
-      var flag = false
-      state.todoList.forEach(item => {
-        if (item.selected) {
-          flag = true
-        }
-      })
-      return flag
+      return state.todoList.some(item => item.selected)
     },
     // 获取所有状态为false的数组
     getActivedList (state) {
-      var arr = []
-      state.todoList.forEach(item => {
-        if (!item.selected) {
-          arr.push(item)
-        }
-      })
-      return arr
+      return state.todoList.filter(item => !item.selected)
     },
     // 获取所有状态为true的数组
     getCompletedList (state) {
-      var arr = []
-      state.todoList.forEach(item => {
-        if (item.selected) {
-          arr.push(item)
-        }
-      })
-      return arr
+      return state.todoList.filter(item => item.selected)
     },
     // 获取所有列表项
     getAllList (state) {
