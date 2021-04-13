@@ -1,6 +1,8 @@
 
 # vue-todoList
-技术栈：vue-cli + vuex + express + element-ui + mongodb
+
+**技术栈**：vue-cli + vuex + vue-router + express + element-ui + mongodb
+
 
 ## 实现效果
 ![image](https://user-images.githubusercontent.com/59500738/114514806-43a2a400-9c6e-11eb-8aaf-12fc518261bc.png)
@@ -14,7 +16,7 @@
  + model文件最好放到server文件夹下面，我这样做是为了便于操作
  + 如果项目有格式报错，最好先执行一遍 npm run lint （格式化命令）
 
-
+**这个项目适合刚入门vue的同学练习的项目，有助于理解前后端开发**
 ## Project setup
 ```
 //安装依赖
